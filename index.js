@@ -136,7 +136,7 @@ const runAction = () => {
 		try {
 			const command = `${useNpm ? "npx --no-install" : "yarn run"} ${cmd} --${platform} ${
 					release ? "--publish always" : ""
-				} ${args}`;
+				} ${args.trim()}`;
 			log(`Run Command: ${command}`);
 			run(
 				command,
