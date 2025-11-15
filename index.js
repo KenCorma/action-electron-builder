@@ -134,10 +134,12 @@ const runAction = () => {
 	const cmd = useVueCli ? "vue-cli-service electron:build" : "electron-builder";
 	for (let i = 0; i < maxAttempts; i += 1) {
 		try {
-			run(
-				`${useNpm ? "npx --no-install" : "yarn run"} ${cmd} --${platform} ${
+			const command = `${useNpm ? "npx --no-install" : "yarn run"} ${cmd} --${platform} ${
 					release ? "--publish always" : ""
-				} ${args}`,
+				} ${args}`;
+			log(`Run Command: ${command}`);
+			run(
+				command,
 				appRoot,
 			);
 			break;
